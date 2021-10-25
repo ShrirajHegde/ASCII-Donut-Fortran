@@ -2,12 +2,12 @@ program donut
     implicit none
     INTEGER::k
     real,PARAMETER::scale=1
+    real,PARAMETER::speed=0.7
     INTEGER,PARAMETER::height=scale*80
     INTEGER,PARAMETER::width=scale*22
     real::a=0,b=0,j,i,z(width*height)
     CHARACTER:: screen(width*height)
     real,PARAMETER::TAU=3.14159*2
-    real,PARAMETER::speed=1
     CHARACTER:: ATABLE*12=".,-~:;=!*#$@"
     ! INTEGER::la
     real::sini,cosj,sina,sinj,cosa,cosj2,mess
@@ -15,7 +15,7 @@ program donut
     INTEGER::x,y,o,N
     CHARACTER::ASCII10=achar(10)
 
-    ! ESC or box in the next line is the ASCII escape character 13
+    ! ESC or box in the next line is the ASCII character 27 (escape)
     write(*,"(A)",advance="no")"[2J"
 
     do while(.true.)
@@ -62,9 +62,7 @@ program donut
                 write(*,"(A)",advance="no")screen(k)
             endif
         enddo
-        call FLUSH(5)
         a=a+0.04*speed
         b=b+0.04*speed
     enddo
-
 end program donut
