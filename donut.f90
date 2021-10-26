@@ -1,15 +1,14 @@
 program donut
     implicit none
     INTEGER::k
-    real,PARAMETER::scale=1
-    real,PARAMETER::speed=0.7
+    real,PARAMETER::scale=4
+    real,PARAMETER::speed=3
     INTEGER,PARAMETER::height=scale*80
     INTEGER,PARAMETER::width=scale*22
     real::a=0,b=0,j,i,z(width*height)
     CHARACTER:: screen(width*height)
     real,PARAMETER::TAU=3.14159*2
     CHARACTER:: ATABLE*12=".,-~:;=!*#$@"
-    ! INTEGER::la
     real::sini,cosj,sina,sinj,cosa,cosj2,mess
     real::cosi,cosb,t,sinb
     INTEGER::x,y,o,N
