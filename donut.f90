@@ -1,8 +1,8 @@
 program donut
     implicit none
     INTEGER::k
-    real,PARAMETER::scale=4
-    real,PARAMETER::speed=3
+    real,PARAMETER::scale=1
+    real,PARAMETER::speed=1
     INTEGER,PARAMETER::height=scale*80
     INTEGER,PARAMETER::width=scale*22
     real::a=0,b=0,j,i,z(width*height)
@@ -13,9 +13,9 @@ program donut
     real::cosi,cosb,t,sinb
     INTEGER::x,y,o,N
     CHARACTER::ASCII10=achar(10)
+    CHARACTER::ESC=achar(27)
 
-    ! ESC or box in the next line is the ASCII character 27 (escape)
-    write(*,"(A)",advance="no")"[2J"
+    write(*,"(A)",advance="no")ESC//"[2J"
 
     do while(.true.)
         z=0
@@ -35,8 +35,8 @@ program donut
                 sinb=sin(b)
                 mess=1.00/(sini*cosj2*sinA+sinj*cosA+5)
                 t=sini*cosj2*cosa - sinj*sina;
-                x=40*scale+scale*30*mess*(cosi*cosj2*cosB-t*sinB)
-                y= scale*12+scale*15*mess*(cosi*cosj2*sinB +t*cosB)
+                x=int(40*scale+scale*30*mess*(cosi*cosj2*cosB-t*sinB))
+                y=int(scale*12+scale*15*mess*(cosi*cosj2*sinB +t*cosB))
                 o=x+height*y
                 N=int(8*((sinj*sina-sini*cosj*cosa)*cosb-sini*cosj*sina-sinj*cosa-cosi *cosj*sinb))
                 if(width>y .and. y>0 .and. x>0 .and. height>x .and. mess>z(o))then
@@ -52,7 +52,7 @@ program donut
             j=j+0.07
         enddo
 
-        write(*,"(A)",advance="no")"[d"
+        write(*,"(A)",advance="no")ESC//"[d"
         
         do k=0,width*height+1
             if(mod(k,height)==0)then
