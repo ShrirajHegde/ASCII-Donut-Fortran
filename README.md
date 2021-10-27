@@ -1,4 +1,4 @@
-# ASCII-Donut-FORTRAN
+# ASCII-Donut-Fortran
 The infamous ASCII spinning donut written Fortran
 
 ## How it looks:
