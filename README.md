@@ -1,5 +1,5 @@
 # ASCII-Donut-Fortran
-The classic ASCII spinning donut written Fortran
+The classic ASCII spinning donut, written Fortran
 
 ## How it looks:
 Scale = 1:
@@ -21,8 +21,14 @@ Scale = 3:
 - Change the `speed` parameter to change the speed of the spinning
 - Anything else
 
-
 Suggestions and  improvements highly welcome :)
+
+---
+## Note:
+
+The performance difference between `ifort` and `gfrotran` is due to gfortran's lack of output buffering for non regular files. Program compiled with gfortran calls  [write](https://man7.org/linux/man-pages/man2/write.2.html) for every character, which significantly decreases the performance.
+
+Intel fortran compiler doesn't flush the output buffer until it enounters LF (`\n`) character. [Line 57](donut.f90#L57) is added for this purpose
 
 ---
 ## References:
