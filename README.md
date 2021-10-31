@@ -1,5 +1,5 @@
 # ASCII-Donut-Fortran
-The infamous ASCII spinning donut written Fortran
+The classic ASCII spinning donut written Fortran
 
 ## How it looks:
 Scale = 1:

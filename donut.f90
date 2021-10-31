@@ -1,8 +1,8 @@
 program donut
     implicit none
     INTEGER::k
-    real,PARAMETER::scale=3
-    real,PARAMETER::speed=0.4
+    real,PARAMETER::scale=1
+    real,PARAMETER::speed=1
     INTEGER,PARAMETER::height=scale*80
     INTEGER,PARAMETER::width=scale*22
     real::angle_x=0,angle_y=0,theta,phi,z_buffer(width*height)
@@ -52,6 +52,9 @@ program donut
             enddo
             theta=theta+0.07
         enddo
+        
+        ! Write a newline to make ifort compiled binary to flush the buffer
+        print*," "
 
         write(*,"(A)",advance="no")ESC//"[d"
         
