@@ -3,8 +3,8 @@ program donut
     INTEGER::k
     real,PARAMETER::scale=1
     real,PARAMETER::speed=1
-    INTEGER,PARAMETER::height=scale*80
-    INTEGER,PARAMETER::width=scale*22
+    INTEGER,PARAMETER::height=int(scale*80)
+    INTEGER,PARAMETER::width=int(scale*22)
     real::angle_x=0,angle_y=0,theta,phi,z_buffer(width*height)
     CHARACTER:: screen(width*height)
     real,PARAMETER::TAU=3.14159*2
@@ -14,10 +14,16 @@ program donut
     INTEGER::x,y,o,lum
     CHARACTER::ASCII10=achar(10)
     CHARACTER::ESC=achar(27)
+    REAL::fps=0, ti,tf
+    INTEGER::count, rate, cmax
 
     write(*,"(A)",advance="no")ESC//"[2J"
 
     do while(.true.)
+
+        call system_clock(count,rate,cmax)
+        ti=float(count)/rate
+
         z_buffer=0.0
         screen=" "
         theta=0.0
@@ -53,6 +59,8 @@ program donut
             theta=theta+0.07
         enddo
         
+        write(0,"(A,F8.3)",advance="no")"FPS = ",fps
+
         ! Write a newline to make ifort compiled binary to flush the buffer
         print*," "
 
@@ -67,5 +75,9 @@ program donut
         enddo
         angle_x=angle_x+0.04*speed
         angle_y=angle_y+0.04*speed
+        
+        call system_clock(count,rate,cmax)
+        tf=float(count)/rate
+        fps=1.00/(tf-ti)
     enddo
 end program donut
