@@ -28,7 +28,7 @@ Suggestions and  improvements highly welcome :)
 
 The performance difference between `ifort` and `gfrotran` is due to gfortran's lack of output buffering for non regular files. Program compiled with gfortran calls  [write](https://man7.org/linux/man-pages/man2/write.2.html) for every character, which significantly decreases the performance.
 
-Intel fortran compiler doesn't flush the output buffer until it enounters LF (`\n`) character. [Line 57](donut.f90#L57) is added for this purpose
+Intel fortran compiler doesn't flush the output buffer until it enounters LF (`\n`) character. [Line 65](donut.f90#L65) is added for this purpose
 
 ---
 ## References:
